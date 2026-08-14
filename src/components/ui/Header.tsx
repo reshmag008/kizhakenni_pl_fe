@@ -14,9 +14,9 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(false)
 
   const navItems = [
-    isLoggedIn
-    ? { path: "/login", label: "Logout", icon: LogOut }
-    : { path: "/login", label: "Login", icon: LogIn },
+    // isLoggedIn
+    // ? { path: "/login", label: "Logout", icon: LogOut }
+    // : { path: "/login", label: "Login", icon: LogIn },
     { path: '/', label: 'Home', icon: Home },
     { path: '/players', label: 'Players', icon: Users },
     { path: '/register', label: 'Register', icon: UserPlus },
