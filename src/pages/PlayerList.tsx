@@ -157,7 +157,7 @@ const [approvingPlayerId, setApprovingPlayerId] = useState<number | null>(null);
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
             <div className="text-center sm:text-left">
               <h1 className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl mb-1 sm:mb-2">
-              SN Brothers All Kerala Kannur Premier League - Season 1  - Player Roster
+              Kizhakenni T10  - Player Roster
               </h1>
               <p className="text-primary-foreground/80 text-sm sm:text-lg">
                 {players ? players.length : 0} {players &&players.length === 1 ? 'player' : 'players'} registered for auction
@@ -258,192 +258,192 @@ const [approvingPlayerId, setApprovingPlayerId] = useState<number | null>(null);
             </Link> 
           </div>
         ) : (
-          // <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
-          //   {players && players.map((player) => (
-          //     <PlayerCard key={player.id} player={player} />
-          //   ))}
-          // </div>
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+            {players && players.map((player) => (
+              <PlayerCard key={player.id} player={player} />
+            ))}
+          </div>
 
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+//       <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
 
         
 
-  {players && players.map((player) => (
-    <div key={player.id} className="relative group">
-  <img
-    src={playerCardImg}
-    alt="img"
-    className="w-full h-full object-cover"
-  />
+//   {players && players.map((player) => (
+//     <div key={player.id} className="relative group">
+//   <img
+//     src={playerCardImg}
+//     alt="img"
+//     className="w-full h-full object-cover"
+//   />
 
   
 
-  {/* Admin Overlay */}
-  {isLoggedIn && player.status==1 && (
-    <div className="absolute top-3 right-3 z-30 flex items-center gap-3 rounded-lg bg-black/75 p-2 backdrop-blur-sm shadow-lg">
-      {/* Payment Screenshot */}
-      {player.payment_screenshot ? (
-        <a
-          href={`https://storage.googleapis.com/rajas_pl/${player.payment_screenshot}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src={`https://storage.googleapis.com/rajas_pl/${player.payment_screenshot}`}
-            alt="Payment Screenshot"
-            className="h-16 w-12 rounded border border-white object-cover hover:scale-105 transition-transform"
-          />
-        </a>
-      ) : (
-        <div className="flex h-16 w-12 items-center justify-center rounded border border-dashed border-gray-400 text-[10px] text-white">
-          No Image
-        </div>
-      )}
+//   {/* Admin Overlay */}
+//   {isLoggedIn && player.status==1 && (
+//     <div className="absolute top-3 right-3 z-30 flex items-center gap-3 rounded-lg bg-black/75 p-2 backdrop-blur-sm shadow-lg">
+//       {/* Payment Screenshot */}
+//       {player.payment_screenshot ? (
+//         <a
+//           href={`https://storage.googleapis.com/rajas_pl/${player.payment_screenshot}`}
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           <img
+//             src={`https://storage.googleapis.com/rajas_pl/${player.payment_screenshot}`}
+//             alt="Payment Screenshot"
+//             className="h-16 w-12 rounded border border-white object-cover hover:scale-105 transition-transform"
+//           />
+//         </a>
+//       ) : (
+//         <div className="flex h-16 w-12 items-center justify-center rounded border border-dashed border-gray-400 text-[10px] text-white">
+//           No Image
+//         </div>
+//       )}
 
-      {/* Approve Button */}
-      { approvingPlayerId === player.id  ? (
-  <div className="flex items-center justify-center rounded-md bg-green-600 px-3 py-2">
-    <svg
-      className="h-4 w-4 animate-spin text-white"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <circle
-        className="opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="4"
-      />
-      <path
-        className="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-      />
-    </svg>
-  </div>
-) : (
-  <button
-    onClick={() => handleApprove(player.id)}
-    className="rounded-md bg-green-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-green-700"
-  >
-    Approve
-  </button>
-)}
+//       {/* Approve Button */}
+//       { approvingPlayerId === player.id  ? (
+//   <div className="flex items-center justify-center rounded-md bg-green-600 px-3 py-2">
+//     <svg
+//       className="h-4 w-4 animate-spin text-white"
+//       xmlns="http://www.w3.org/2000/svg"
+//       fill="none"
+//       viewBox="0 0 24 24"
+//     >
+//       <circle
+//         className="opacity-25"
+//         cx="12"
+//         cy="12"
+//         r="10"
+//         stroke="currentColor"
+//         strokeWidth="4"
+//       />
+//       <path
+//         className="opacity-75"
+//         fill="currentColor"
+//         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+//       />
+//     </svg>
+//   </div>
+// ) : (
+//   <button
+//     onClick={() => handleApprove(player.id)}
+//     className="rounded-md bg-green-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-green-700"
+//   >
+//     Approve
+//   </button>
+// )}
 
-    </div>
-  )}
+//     </div>
+//   )}
 
-  {/* Existing content */}
-  <div className="absolute top-[43.3%] left-[4.8%] text-right text-white font-bold text-lg">
-    <img
-      src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
-      alt="img"
-      className="w-[37.5%] aspect-[1/1.56] object-cover rounded-[4%]"
-    />
-  </div>
-
-
-  {/* {!player.bid_amount && (
-  <div
-    className="
-      absolute top-[20%] right-[4%] z-20
-      flex items-center gap-3
-      rounded-full
-      border border-emerald-400/60
-      bg-slate-950/90
-      px-3 py-1.5
-      shadow-[0_0_15px_rgba(52,211,153,0.3)]
-      backdrop-blur-sm
-    "
-  >
-    <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-[9px] font-black uppercase text-slate-950">
-      SOLD
-    </span>
-
-    <span className="text-xs font-bold text-white">
-      Team Name
-    </span>
-
-    <span className="text-sm font-black text-yellow-400">
-      ₹1,000
-    </span>
-  </div>
-)} */}
+//   {/* Existing content */}
+//   <div className="absolute top-[43.3%] left-[4.8%] text-right text-white font-bold text-lg">
+//     <img
+//       src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
+//       alt="img"
+//       className="w-[37.5%] aspect-[1/1.56] object-cover rounded-[4%]"
+//     />
+//   </div>
 
 
-      <div className="absolute bottom-[20%] left-[50%] w-[13%] text-left text-green font-bold text-[30px]">
-        {player.id}
-      </div>
+//   {/* {!player.bid_amount && (
+//   <div
+//     className="
+//       absolute top-[20%] right-[4%] z-20
+//       flex items-center gap-3
+//       rounded-full
+//       border border-emerald-400/60
+//       bg-slate-950/90
+//       px-3 py-1.5
+//       shadow-[0_0_15px_rgba(52,211,153,0.3)]
+//       backdrop-blur-sm
+//     "
+//   >
+//     <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-[9px] font-black uppercase text-slate-950">
+//       SOLD
+//     </span>
 
-      <div
-        className="absolute bottom-[14%] left-[1%] w-[45%] text-center font-bold text-[80%] text-black">
-        {player.fullname.toUpperCase()}
-      </div>
+//     <span className="text-xs font-bold text-white">
+//       Team Name
+//     </span>
 
-      <div className="absolute bottom-[9.2%] left-[48%] text-left text-black font-bold text-[65%]">
-        {player.player_role}
-      </div>
+//     <span className="text-sm font-black text-yellow-400">
+//       ₹1,000
+//     </span>
+//   </div>
+// )} */}
 
-      <div className="absolute bottom-[7.2%] left-[48%] text-left text-black font-bold text-[65%]">
-        {player.batting_style}
-      </div>
 
-      <div className="absolute bottom-[4.8%] left-[48%] text-left text-black font-bold text-[65%]">
-        {player.bowling_style}
-      </div>
+//       <div className="absolute bottom-[20%] left-[50%] w-[13%] text-left text-green font-bold text-[30px]">
+//         {player.id}
+//       </div>
 
-      <div className="absolute bottom-[2.7%] left-[48%] text-left text-black font-bold text-[65%]">
-        {capitalizeFirst(player?.location)}
-      </div>
+//       <div
+//         className="absolute bottom-[14%] left-[1%] w-[45%] text-center font-bold text-[80%] text-black">
+//         {player.fullname.toUpperCase()}
+//       </div>
 
-      <div className="absolute bottom-[0.2%] left-[48%] text-left text-black font-bold gap-2">
-        <span className="text-black font-bold text-[65%]">
-          {player.contact_no}
-        </span>
+//       <div className="absolute bottom-[9.2%] left-[48%] text-left text-black font-bold text-[65%]">
+//         {player.player_role}
+//       </div>
 
-        {player.status ==1  && (
-          <span className="ml-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[50%] font-bold text-white shadow-sm">
-            Pending
-          </span>
+//       <div className="absolute bottom-[7.2%] left-[48%] text-left text-black font-bold text-[65%]">
+//         {player.batting_style}
+//       </div>
+
+//       <div className="absolute bottom-[4.8%] left-[48%] text-left text-black font-bold text-[65%]">
+//         {player.bowling_style}
+//       </div>
+
+//       <div className="absolute bottom-[2.7%] left-[48%] text-left text-black font-bold text-[65%]">
+//         {capitalizeFirst(player?.location)}
+//       </div>
+
+//       <div className="absolute bottom-[0.2%] left-[48%] text-left text-black font-bold gap-2">
+//         <span className="text-black font-bold text-[65%]">
+//           {player.contact_no}
+//         </span>
+
+//         {player.status ==1  && (
+//           <span className="ml-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[50%] font-bold text-white shadow-sm">
+//             Pending
+//           </span>
           
-        )}
-      </div>
+//         )}
+//       </div>
 
       
 
       
-     {/* {isLogin && ( */}
-     <div className="absolute top-3 left-[15%] right-0 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 sm:gap-3 px-4">
-    {/* <button
-      onClick={() => handleEdit(player)}
-      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors"
-    >
-      <Edit className="w-4 h-4" />
-    </button> */}
+//      {/* {isLogin && ( */}
+//      <div className="absolute top-3 left-[15%] right-0 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 sm:gap-3 px-4">
+//     {/* <button
+//       onClick={() => handleEdit(player)}
+//       className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors"
+//     >
+//       <Edit className="w-4 h-4" />
+//     </button> */}
 
-    {/* <button
-      onClick={() => handleDelete(player.id)}
-      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition-colors"
-    >
-      <Trash2 className="w-4 h-4" />
-    </button> */}
-    {/* <button
-      onClick={() => handleDownload(player)}
-      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition-colors"
-    >
-      <Download className="w-4 h-4" />
-    </button> */}
+//     {/* <button
+//       onClick={() => handleDelete(player.id)}
+//       className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition-colors"
+//     >
+//       <Trash2 className="w-4 h-4" />
+//     </button> */}
+//     {/* <button
+//       onClick={() => handleDownload(player)}
+//       className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition-colors"
+//     >
+//       <Download className="w-4 h-4" />
+//     </button> */}
 
-  </div>
-  {/* )} */}
+//   </div>
+//   {/* )} */}
 
-</div>
-  ))}
-</div>
+// </div>
+//   ))}
+// </div>
 
         )}
       </section>

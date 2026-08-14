@@ -248,7 +248,7 @@ useEffect(() => {
             </p>
 
             <h2 className="mt-1 text-2xl lg:text-3xl xl:text-4xl font-black text-white tracking-wide">
-              SN Brothers All Kerala Kannur Premier League - Season 1 
+              Kizhakenni T10
             </h2>
 
           </div>

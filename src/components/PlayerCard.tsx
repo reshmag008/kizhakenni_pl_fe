@@ -79,7 +79,7 @@ const PlayerCard = ({ player }: PlayerCardProps) => {
         {/* Player Info */}
         <div className="p-3 sm:p-5">
           <h3 className="font-heading font-bold text-base sm:text-lg text-foreground mb-2 sm:mb-3 truncate">
-            {player.fullname}
+            {player.id}. {player.fullname}
           </h3>
 
           <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">

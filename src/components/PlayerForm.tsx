@@ -50,7 +50,7 @@ const [paymentPreview, setPaymentPreview] = useState("");
     jersey_no:'',
     jersey_size : '',
     whatsapp_no : '',
-    status: 1,
+    status: 2,
     bid_amount : 0,
     payment_screenshot : '',
   });
@@ -185,10 +185,10 @@ const [paymentPreview, setPaymentPreview] = useState("");
     }
 
    
-    if (!formData.jersey_size) {
-      toast.error('Jersey Size is required');
-      return;
-    }
+    // if (!formData.jersey_size) {
+    //   toast.error('Jersey Size is required');
+    //   return;
+    // }
 
    
 
@@ -558,7 +558,7 @@ const [paymentPreview, setPaymentPreview] = useState("");
           </div>
 
           {/* Jersey Name */}
-          <div className="space-y-1.5 sm:space-y-2">
+          {/* <div className="space-y-1.5 sm:space-y-2">
             <Label htmlFor="contact" className="flex items-center gap-2 text-xs sm:text-sm font-semibold">
               <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
               Jersey Name
@@ -570,10 +570,10 @@ const [paymentPreview, setPaymentPreview] = useState("");
               placeholder="Enter Jersey Name"
               className={inputClasses}
             />
-          </div>
+          </div> */}
 
           {/* Jersey No */}
-          <div className="space-y-1.5 sm:space-y-2">
+          {/* <div className="space-y-1.5 sm:space-y-2">
             <Label htmlFor="contact" className="flex items-center gap-2 text-xs sm:text-sm font-semibold">
               <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
               Jersey Number
@@ -585,10 +585,10 @@ const [paymentPreview, setPaymentPreview] = useState("");
               placeholder="Enter Jersey No"
               className={inputClasses}
             />
-          </div>
+          </div> */}
 
           {/* Jersey Size */}
-          <div className="space-y-1.5 sm:space-y-2">
+          {/* <div className="space-y-1.5 sm:space-y-2">
             <Label className="flex items-center gap-2 text-xs sm:text-sm font-semibold">
               <Target className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
               Jersey Size*
@@ -608,14 +608,14 @@ const [paymentPreview, setPaymentPreview] = useState("");
                 ))}
               </SelectContent>
             </Select>
-          </div>
+          </div> */}
 
 
 
 
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-4 p-5 rounded-xl border border-border bg-card shadow-sm">
+        {/* <div className="flex flex-col items-center justify-center gap-4 p-5 rounded-xl border border-border bg-card shadow-sm">
     <h3 className="text-lg font-semibold">
       Registration QR Code
     </h3>
@@ -644,9 +644,9 @@ const [paymentPreview, setPaymentPreview] = useState("");
     <p className="text-xs text-center text-muted-foreground">
       Scan this QR code to register or share it with players.
     </p>
-  </div>
+  </div> */}
 
-  <div className="space-y-3">
+  {/* <div className="space-y-3">
   <Label className="flex items-center gap-2 text-sm font-semibold">
     <Upload className="w-4 h-4 text-primary" />
     Payment Screenshot *
@@ -694,7 +694,7 @@ const [paymentPreview, setPaymentPreview] = useState("");
       Remove Screenshot
     </Button>
   )}
-</div>
+</div> */}
 
 
 
