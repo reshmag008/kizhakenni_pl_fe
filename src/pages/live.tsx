@@ -69,6 +69,7 @@ export default function AuctionDashboard() {
     // 👇 Connection logs (VERY IMPORTANT)
     newSocket.on("connect", () => {
       console.log("Connected:", newSocket.id);
+      newSocket.emit("join-room", roomId);
     });
 
     newSocket.on("disconnect", (reason) => {
@@ -116,6 +117,7 @@ export default function AuctionDashboard() {
         if (!newSocket.connected) {
           console.log("Manually reconnecting...");
           newSocket.connect();
+           newSocket.emit("join-room", roomId);
         }
       }
     };
@@ -341,7 +343,7 @@ export default function AuctionDashboard() {
       ">
 
 
-  <div
+  {/* <div
   className="
     mt-3
     flex items-center justify-center
@@ -367,11 +369,11 @@ export default function AuctionDashboard() {
     </div>
 
   </div>
-</div>
+</div> */}
 
         {/* CURRENT PLAYER CARD */}
 
-        {/* {
+         {
           currentBidPlayer &&
           (
 
@@ -542,7 +544,7 @@ export default function AuctionDashboard() {
             </div>
 
           )
-        } */}
+        } 
 
 
 
