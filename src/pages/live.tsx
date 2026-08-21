@@ -5,7 +5,7 @@ import {
   IndianRupee,
 } from "lucide-react";
 import { io } from "socket.io-client";
-import { BACKEND_URL, SOCKET_URL, TOTAL_PLAYER, roomId } from "../constants";
+import { BACKEND_URL, TOTAL_PLAYER, roomId } from "../constants";
 import bellGif from '../assets/bell.gif';
 import congratsJif from '../assets/congratulations.gif';
 import clapJif from '../assets/clap.gif'
@@ -50,7 +50,7 @@ export default function AuctionDashboard() {
 
 
   useEffect(() => {
-    const newSocket = io(SOCKET_URL, {
+    const newSocket = io(BACKEND_URL, {
       transports: ["websocket"], // 👈 prefer websocket only
       withCredentials: true,
 
@@ -69,7 +69,7 @@ export default function AuctionDashboard() {
     // 👇 Connection logs (VERY IMPORTANT)
     newSocket.on("connect", () => {
       console.log("Connected:", newSocket.id);
-      newSocket.emit("join-room", roomId);
+       newSocket.emit("join-room", roomId);
     });
 
     newSocket.on("disconnect", (reason) => {
@@ -82,7 +82,7 @@ export default function AuctionDashboard() {
 
     newSocket.on("reconnect", () => {
       console.log("Reconnected!");
-
+      newSocket.emit("join-room", roomId);
       // 👇 Re-fetch data after reconnect
       getSoldPlayers();
       GetAllTeams();
@@ -98,6 +98,7 @@ export default function AuctionDashboard() {
       if (!newSocket.connected) {
         console.log("Focus reconnect...");
         newSocket.connect();
+        newSocket.emit("join-room", roomId);
       }
     };
 
@@ -105,6 +106,7 @@ export default function AuctionDashboard() {
       if (!newSocket.connected) {
         console.log("Heartbeat reconnect...");
         newSocket.connect();
+        newSocket.emit("join-room", roomId);
       }
     }, 5000);
 
@@ -113,11 +115,11 @@ export default function AuctionDashboard() {
     const handleVisibilityChange = () => {
       if (document.visibilityState === "visible") {
         console.log("App came back to foreground");
-
+        console.log(newSocket.connected)
         if (!newSocket.connected) {
           console.log("Manually reconnecting...");
           newSocket.connect();
-           newSocket.emit("join-room", roomId);
+          newSocket.emit("join-room", roomId);
         }
       }
     };
@@ -166,7 +168,7 @@ export default function AuctionDashboard() {
   useEffect(() => {
     if (socket) {
 
-      socket.emit("join-room", roomId);
+      // socket.emit("join-room", roomId);
 
       socket.on('current_bid', (message: any) => {
         console.log("message== ", message);

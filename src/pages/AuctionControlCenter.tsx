@@ -7,7 +7,7 @@ import {
   RefreshCcw,
 } from "lucide-react";
 import PlayerService from "@/service/PlayerService";
-import { BACKEND_URL, roomId, SOCKET_URL, TOTAL_PLAYER } from "../constants";
+import { BACKEND_URL, roomId, TOTAL_PLAYER } from "../constants";
 import { io } from "socket.io-client";
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -29,7 +29,7 @@ const AuctionPlayerPage: React.FC = () => {
 
 
   useEffect(() => {
-    const newSocket = io(SOCKET_URL,{
+    const newSocket = io(BACKEND_URL,{
                 transports: ["polling", "websocket"],
                 withCredentials: true,
                 reconnection: true,
