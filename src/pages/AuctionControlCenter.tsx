@@ -9,8 +9,7 @@ import {
 import PlayerService from "@/service/PlayerService";
 import { BACKEND_URL, roomId, TOTAL_PLAYER } from "../constants";
 import { io } from "socket.io-client";
-import { ToastContainer, toast } from 'react-toastify';
-
+import { toast } from 'sonner';
 
 const AuctionPlayerPage: React.FC = () => {
 
