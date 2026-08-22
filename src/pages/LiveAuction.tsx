@@ -280,6 +280,9 @@ const LiveAuction: React.FC = () => {
       socket.on("team_complete", (message: any) => {
         setOpenPopUp(true);
         setPopUpContent(JSON.parse(message));
+        setTimeout(()=>{
+            setOpenPopUp(false);
+        },3000)
       })
 
       socket.on("close_popup", (message: any) => {
@@ -325,6 +328,87 @@ const LiveAuction: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#070b14] text-white">
+
+        {soldPlayer?.id && (
+        <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
+            <div className="sold-stamp">
+            SOLD
+            </div>
+        </div>
+        )}
+
+
+
+
+          {openPopUp && (
+  <div className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center">
+    {/* Popup */}
+    <div className="pointer-events-auto relative animate-in zoom-in-90 fade-in duration-300">
+      <div className="relative w-[320px] overflow-hidden rounded-3xl border border-emerald-400/30 bg-[#0b1220]/95 px-6 py-6 text-center shadow-2xl shadow-emerald-500/20 backdrop-blur-xl sm:w-[380px]">
+
+        {/* Close Button */}
+        <button
+          type="button"
+          onClick={() => setOpenPopUp(false)}
+          className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-slate-400 transition hover:bg-white/10 hover:text-white"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+
+        {/* Glow */}
+        <div className="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-emerald-400/20 blur-3xl" />
+        <div className="absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-amber-400/20 blur-3xl" />
+
+        <div className="relative">
+
+      
+          <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-400">
+            Congratulations!
+          </p>
+
+          {/* Team Logo */}
+          <div className="mx-auto mt-3 flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg">
+            {popUpContent.team_logo ? (
+              <img
+                src={`https://storage.googleapis.com/rajas_pl/${popUpContent.team_logo}`}
+                alt={popUpContent.team_name}
+                className="h-full w-full object-contain p-2"
+              />
+            ) : (
+              <span className="text-3xl">🏆</span>
+            )}
+          </div>
+
+          {/* Team Name */}
+          <h2 className="mt-3 text-2xl font-black text-white">
+            {popUpContent.team_name}
+          </h2>
+
+          <p className="mt-2 text-sm text-slate-400">
+            Squad completed successfully!
+          </p>
+
+          <div className="mt-4 flex items-center justify-center gap-2">
+            <span className="text-lg">🏆</span>
+
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">
+              Auction Complete
+            </span>
+
+            <span className="text-lg">🏆</span>
+          </div>
+        </div>
+
+        {/* Auto-close progress */}
+        <div className="absolute bottom-0 left-0 h-1 w-full overflow-hidden bg-white/5">
+          <div className="h-full animate-[shrink_4s_linear_forwards] bg-gradient-to-r from-emerald-500 via-amber-400 to-emerald-500" />
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
           
 
       <main className="mx-auto max-w-[1800px] space-y-5 px-4 py-5 sm:px-6 lg:px-8">

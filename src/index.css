@@ -153,4 +153,54 @@
   .shadow-gold {
     box-shadow: var(--shadow-gold);
   }
+
+
+  @keyframes soldStamp {
+  0% {
+    opacity: 0;
+    transform: scale(2.5) rotate(-15deg);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(0.9) rotate(-15deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-15deg);
+  }
+}
+
+.sold-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 28px;
+
+  border: 5px solid #dc2626;
+  border-radius: 8px;
+
+  color: #dc2626;
+
+  font-size: 48px;
+  font-weight: 1000;
+  letter-spacing: 0.12em;
+
+  transform: rotate(-15deg);
+
+  background: rgba(255, 255, 255, 0.08);
+
+  text-shadow:
+    1px 1px 0 #7f1d1d;
+
+  box-shadow:
+    0 0 0 3px rgba(220, 38, 38, 0.15),
+    0 8px 30px rgba(0, 0, 0, 0.4);
+
+  animation: soldStamp 0.45s cubic-bezier(0.17, 0.67, 0.32, 1.4)
+    forwards;
+}
+
 }
