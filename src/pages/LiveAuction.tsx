@@ -427,7 +427,7 @@ const LiveAuction: React.FC = () => {
 </div>
 }
 
-        {auctionStatus == 'LIVE' && 
+        {auctionStatus == 'LIVE' && currentBidPlayer?.id &&
           <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#0d1320] shadow-2xl">
             {/* Player Image */}
 
