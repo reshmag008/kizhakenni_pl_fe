@@ -1,5 +1,5 @@
 export const BACKEND_URL =  "https://kizhakkeni-backend-204746249106.europe-west1.run.app/"   //  "https://my-node-app-204746249106.asia-south1.run.app/" //  ; 
-export const TOTAL_PLAYER = 9
+export const TOTAL_PLAYER = 11
 
 
 
