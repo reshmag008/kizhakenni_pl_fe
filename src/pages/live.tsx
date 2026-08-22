@@ -287,7 +287,7 @@ export default function AuctionDashboard() {
 
   return (
 
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white">
+   <div className="live-page min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white">
 
 
       {/* TOP STAT BAR */}
@@ -638,158 +638,159 @@ export default function AuctionDashboard() {
 
         {/* TEAM LIST */}
 
+<div className="space-y-3 sm:space-y-4">
+  {allTeams.map((team: any) => {
+    const expanded = openTeam === String(team.id);
 
-        <div className="space-y-4">
-          {allTeams.map((team: any) => {
-            const expanded = openTeam === String(team.id);
-
-            return (
-              <div
-                key={team.id}
-                className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-900 shadow-lg"
-              >
-                {/* Team Header */}
-                <button
-                  onClick={() => handleTeamClick(String(team.id))}
-                  className="
+    return (
+      <div
+        key={team.id}
+        className="overflow-hidden rounded-xl sm:rounded-2xl border border-slate-700 bg-slate-900 shadow-lg"
+      >
+        {/* Team Header */}
+        <button
+          onClick={() => handleTeamClick(String(team.id))}
+          className="
             w-full
             bg-gradient-to-r
             from-slate-800
             to-blue-900
-            p-4
-            sm:p-5
+            px-3 py-3
+            sm:px-5 sm:py-4
             transition
             hover:brightness-110
           "
-                >
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    {/* Team Name */}
-                    <div className="text-left">
-                      <h2 className="text-xl sm:text-2xl font-bold break-words">
-                        {team.team_name}
-                      </h2>
+        >
+          <div className="flex items-center justify-between gap-3">
 
-                      <p className="mt-1 text-sm text-slate-300">
-                        {team.player_count} Players
-                      </p>
-                    </div>
+            {/* Team Name */}
+            <div className="text-left min-w-0 flex-1">
+              <h2 className="text-base sm:text-xl md:text-2xl font-bold truncate">
+                {team.team_name}
+              </h2>
 
-                    {/* Stats */}
-                    <div className="flex items-center justify-between sm:justify-end gap-4 sm:gap-8">
-                      <div className="text-center">
-                        <p className="text-xs uppercase text-slate-400">
-                          Points
-                        </p>
+              <p className="mt-0.5 text-[11px] sm:text-sm text-slate-300">
+                {team.player_count} Players
+              </p>
+            </div>
 
-                        <p className="text-lg sm:text-xl font-bold">
-                          {team.total_points}
-                        </p>
-                      </div>
+            {/* Stats */}
+            <div className="flex items-center gap-3 sm:gap-6 shrink-0">
 
-                      <div className="text-center">
-                        <p className="text-xs uppercase text-slate-400">
-                          Purse
-                        </p>
+              {/* Points */}
+              <div className="text-center">
+                <p className="text-[9px] sm:text-xs uppercase text-slate-400">
+                  Points
+                </p>
 
-                        <p className="text-lg sm:text-xl font-bold text-green-400">
-                          ₹{team.max_bid_amount?.toLocaleString()}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center">
-                        {expanded ? (
-                          <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6" />
-                        ) : (
-                          <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6" />
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </button>
-
-                {/* Expanded Players */}
-               {expanded && (
-  <div className="w-full overflow-x-hidden rounded-xl border border-slate-700">
-
-    <table className="w-full table-fixed border-collapse">
-
-      <thead className="sticky top-0 z-10 bg-slate-800">
-        <tr className="text-slate-300 uppercase">
-
-          <th className="w-[65%] px-2 sm:px-3 py-2 text-left text-[11px] sm:text-sm font-semibold">
-            Player
-          </th>
-
-          <th className="w-[35%] px-2 sm:px-3 py-2 text-right text-[11px] sm:text-sm font-semibold">
-            Bid Amount
-          </th>
-
-        </tr>
-      </thead>
-
-      <tbody>
-        {isLoading ? (
-          <tr>
-            <td colSpan={2} className="py-8">
-              <div className="flex justify-center items-center">
-                <Loader
-                  type="spinner-cub"
-                  bgColor="gold"
-                  color="gold"
-                  title="Loading..."
-                  size={40}
-                />
+                <p className="text-sm sm:text-lg font-bold">
+                  {team.total_points}
+                </p>
               </div>
-            </td>
-          </tr>
-        ) : (playersByTeam[String(team.id)] || []).length > 0 ? (
-          (playersByTeam[String(team.id)] || []).map(
-            (player: any, index: number) => (
-              <tr
-                key={player.id}
-                className={
-                  index % 2 === 0
-                    ? "bg-slate-900"
-                    : "bg-slate-800/70"
-                }
-              >
 
-                <td className="w-[65%] px-2 sm:px-3 py-2">
-                  <div
-                    className="truncate font-semibold text-xs sm:text-sm"
-                    title={player.fullname}
-                  >
-                    #{player.id}. {player.fullname}
-                  </div>
-                </td>
+              {/* Purse */}
+              <div className="text-center">
+                <p className="text-[9px] sm:text-xs uppercase text-slate-400">
+                  Purse
+                </p>
 
-                <td className="w-[35%] px-2 sm:px-3 py-2 text-right font-bold text-yellow-400 text-xs sm:text-sm">
-                  {player.bid_amount?.toLocaleString()}
-                </td>
+                <p className="text-sm sm:text-lg font-bold text-green-400">
+                  ₹{team.max_bid_amount?.toLocaleString()}
+                </p>
+              </div>
 
-              </tr>
-            )
-          )
-        ) : (
-          <tr>
-            <td
-              colSpan={2}
-              className="py-6 text-center text-slate-400 text-sm"
-            >
-              No players available
-            </td>
-          </tr>
+              {/* Expand */}
+              <div className="flex items-center">
+                {expanded ? (
+                  <ChevronUp className="h-4 w-4 sm:h-6 sm:w-6" />
+                ) : (
+                  <ChevronDown className="h-4 w-4 sm:h-6 sm:w-6" />
+                )}
+              </div>
+            </div>
+          </div>
+        </button>
+
+        {/* Expanded Players */}
+        {expanded && (
+          <div className="w-full overflow-hidden border-t border-slate-700">
+
+            <table className="w-full table-fixed border-collapse">
+
+              <thead className="bg-slate-800">
+                <tr className="text-slate-300 uppercase">
+
+                  <th className="w-[65%] px-2 sm:px-3 py-2 text-left text-[10px] sm:text-sm font-semibold">
+                    Player
+                  </th>
+
+                  <th className="w-[35%] px-2 sm:px-3 py-2 text-right text-[10px] sm:text-sm font-semibold">
+                    Bid Amount
+                  </th>
+
+                </tr>
+              </thead>
+
+              <tbody>
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={2} className="py-8">
+                      <div className="flex justify-center items-center">
+                        <Loader
+                          type="spinner-cub"
+                          bgColor="gold"
+                          color="gold"
+                          title="Loading..."
+                          size={35}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ) : (playersByTeam[String(team.id)] || []).length > 0 ? (
+                  (playersByTeam[String(team.id)] || []).map(
+                    (player: any, index: number) => (
+                      <tr
+                        key={player.id}
+                        className={
+                          index % 2 === 0
+                            ? "bg-slate-900"
+                            : "bg-slate-800/70"
+                        }
+                      >
+                        <td className="w-[65%] px-2 sm:px-3 py-2">
+                          <div
+                            className="truncate font-semibold text-[11px] sm:text-sm"
+                            title={player.fullname}
+                          >
+                            #{player.id}. {player.fullname}
+                          </div>
+                        </td>
+
+                        <td className="w-[35%] px-2 sm:px-3 py-2 text-right font-bold text-yellow-400 text-[11px] sm:text-sm">
+                          {player.bid_amount?.toLocaleString()}
+                        </td>
+                      </tr>
+                    )
+                  )
+                ) : (
+                  <tr>
+                    <td
+                      colSpan={2}
+                      className="py-5 text-center text-slate-400 text-xs sm:text-sm"
+                    >
+                      No players available
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+
+            </table>
+          </div>
         )}
-      </tbody>
-
-    </table>
-
-  </div>
-)}
-              </div>
-            );
-          })}
-        </div>
+      </div>
+    );
+  })}
+</div>
 
 
 

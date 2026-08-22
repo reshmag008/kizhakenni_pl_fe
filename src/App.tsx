@@ -22,7 +22,7 @@ import Login from "./pages/Login";
 import LiveAuctionPlayerCard from "./pages/Auction";
 import AuctionPlayerPage from "./pages/AuctionControlCenter";
 import PlayerDisplay from "./pages/PlayerDisplay";
-import PlayerAuctionView from "./pages/live";
+import PlayerAuctionView from "./pages/LiveAuction";
 
 const queryClient = new QueryClient();
 

@@ -348,59 +348,58 @@ const AuctionPlayerPage: React.FC = () => {
         )}
 
         {/* Search and Action Buttons */}
-        <div className="mt-8 flex flex-col lg:flex-row gap-4">
-          <div className="flex flex-1 gap-3">
-            <input
-              type="text"
-              placeholder="Id"
-              value={searchText}
-              onChange={handleInputChange}
-              className="w-20 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+<div className="mt-8 flex flex-col lg:flex-row gap-4">
+  {/* Search */}
+  <div className="flex w-full lg:flex-1 gap-2 sm:gap-3">
+    <input
+      type="text"
+      placeholder="Id"
+      value={searchText}
+      onChange={handleInputChange}
+      className="w-20 sm:w-24 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
 
-            <button
-              onClick={GetPlayer}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg flex items-center gap-2"
-            >
-              <Search size={18} />
-              Search
-            </button>
-          </div>
+    <button
+      onClick={GetPlayer}
+      className="flex-1 sm:flex-none bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-5 py-2 sm:py-3 text-sm sm:text-base rounded-lg flex items-center justify-center gap-1.5 sm:gap-2"
+    >
+      <Search size={16} className="sm:w-[18px] sm:h-[18px]" />
+      Search
+    </button>
+  </div>
 
-          <div className="flex flex-wrap gap-3">
-            <button
-              onClick={sellPlayer}
-              className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-lg flex items-center gap-2"
-            >
-              <BadgeDollarSign size={18} />
-              Sell
-            </button>
+  {/* Action Buttons */}
+  <div className="grid grid-cols-2 lg:flex gap-2 sm:gap-3 w-full lg:w-auto">
 
-            <button
-              onClick={setUnsoldPlayer}
-              className="bg-red-600 hover:bg-red-700 text-white px-5 py-3 rounded-lg flex items-center gap-2"
-            >
-              <XCircle size={18} />
-              Unsold
-            </button>
+    {/* Sell */}
+    <button
+      onClick={sellPlayer}
+      className="bg-green-600 hover:bg-green-700 text-white px-3 sm:px-5 py-2 sm:py-3 text-sm sm:text-base rounded-lg flex items-center justify-center gap-1.5 sm:gap-2"
+    >
+      <BadgeDollarSign size={16} className="sm:w-[18px] sm:h-[18px]" />
+      Sell
+    </button>
 
-            <button
-              onClick={handleBidBack}
-              className="bg-gray-600 hover:bg-gray-700 text-white px-5 py-3 rounded-lg flex items-center gap-2"
-            >
-              <ArrowLeft size={18} />
-              Back
-            </button>
+    {/* Unsold */}
+    <button
+      onClick={setUnsoldPlayer}
+      className="bg-red-600 hover:bg-red-700 text-white px-3 sm:px-5 py-2 sm:py-3 text-sm sm:text-base rounded-lg flex items-center justify-center gap-1.5 sm:gap-2"
+    >
+      <XCircle size={16} className="sm:w-[18px] sm:h-[18px]" />
+      Unsold
+    </button>
 
-            <button
-              onClick={getUnsoldPlayers}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-lg flex items-center gap-2"
-            >
-              <RefreshCcw size={18} />
-              Get Unsold Players
-            </button>
-          </div>
-        </div>
+    {/* Get Unsold Players */}
+    <button
+      onClick={getUnsoldPlayers}
+      className="col-span-2 lg:col-span-1 bg-orange-500 hover:bg-orange-600 text-white px-3 sm:px-5 py-2 sm:py-3 text-sm sm:text-base rounded-lg flex items-center justify-center gap-1.5 sm:gap-2"
+    >
+      <RefreshCcw size={16} className="sm:w-[18px] sm:h-[18px]" />
+      Get Unsold Players
+    </button>
+
+  </div>
+</div>
 
         {/* Teams Section */}
         <div className="mt-10">
