@@ -12,7 +12,7 @@ import PlayerService from "@/service/PlayerService";
 import { io } from "socket.io-client";
 import { BACKEND_URL, TOTAL_PLAYER, roomId } from "../constants";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'sonner';
 
 
 
@@ -646,7 +646,7 @@ const LiveAuction: React.FC = () => {
             <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-slate-800">
               {player.profile_image ? (
                 <img
-                  src={`https://storage.googleapis.com/rajas_pl/${currentBidPlayer.profile_image}`}
+                  src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
                   alt={player.name}
                   className="h-full w-full object-cover"
                 />
