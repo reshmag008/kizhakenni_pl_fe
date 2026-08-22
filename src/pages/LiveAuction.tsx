@@ -56,6 +56,8 @@ const LiveAuction: React.FC = () => {
   const [playersByTeam, setPlayersByTeam] = useState<any>({});
   const [loadingTeam, setLoadingTeam] = useState<string | null>(null);
   const [auctionStatus, setAuctionStatus] = useState<string>('LIVE');
+  
+  const [unSoldPlayer, setUnSoldPlayer] = useState<any>({});
 
   useEffect(() => {
 
@@ -259,14 +261,17 @@ const LiveAuction: React.FC = () => {
         console.log("current_player ---- ", message);
         setSoldPlayer({});
         setCurrentCall({})
+        setUnSoldPlayer({})
         setcurrentBidPlayer(parseData(message));
       });
       socket.on("team_call", (message: any) => {
         console.log("team_call ---- ", message);
         setSoldPlayer({});
+        setUnSoldPlayer({})
         setCurrentCall(parseData(message));
       });
       socket.on("player_sold", (message: any) => {
+        setUnSoldPlayer({})
         console.log("player_sold ---- ", message);
         let player = JSON.parse(message)
         setSoldPlayer(player);
@@ -274,6 +279,17 @@ const LiveAuction: React.FC = () => {
         toast.success(`${player.player_name} sold to ${player.team_name} for ${player.bid_amount}`)
         getSoldPlayers();
         GetAllTeams();
+        GetAllPlayers();
+      });
+
+      socket.on("player_unsold", (message: any) => {
+        console.log("player_unsold ---- ", message);
+        let player = JSON.parse(message)
+        setUnSoldPlayer(player);
+        setCurrentCall({})
+        setSoldPlayer({})
+        // toast.success(`${player.player_name} Unsold`)
+        // GetAllTeams();
         GetAllPlayers();
       });
 
@@ -333,6 +349,14 @@ const LiveAuction: React.FC = () => {
         <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
             <div className="sold-stamp">
             SOLD
+            </div>
+        </div>
+        )}
+
+        {unSoldPlayer?.id && (
+        <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
+            <div className="unsold-stamp">
+            UNSOLD
             </div>
         </div>
         )}
